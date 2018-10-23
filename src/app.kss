@@ -1,0 +1,87 @@
+@import url("potassium-es/styles/potassium-es.kss");
+@import url("potassium-components/styles/potassium-components.kss");
+
+/** Site KSS */
+
+:root {
+	/*
+	These variables are overrides of variables from potassium-components's common.kss:
+	https://github.com/PotassiumES/potassium-components/blob/master/styles/common.kss
+
+	It's safe to delete them if you do not want to override the component library's default variables.
+	*/
+
+	/* layout */
+	--page-app-content-padding: 20px;
+	--inner-element-padding: calc(var(--page-app-content-padding) / 2);
+	--inner-section-margin: calc(var(--page-app-content-padding) * 1.2);
+
+	/* text */
+	--base-font: sans-serif;
+
+	--base-page-font-size: 20px;
+	--page-font-size-5: calc(var(--base-page-font-size) + 1.6em);
+	--page-font-size-4: calc(var(--base-page-font-size) + 1.2em);
+	--page-font-size-3: calc(var(--base-page-font-size) + 0.8em);
+	--page-font-size-2: calc(var(--base-page-font-size) + 0.4em);
+	--page-font-size-0: calc(var(--base-page-font-size) - 0.4em);
+
+	--base-page-font-weight: 300;
+	--font-weight-2: calc(var(--base-page-font-weight) + 200);
+
+	--base-spatial-font-size: 8cm;
+	--spatial-font-size-5: 16cm;
+	--spatial-font-size-4: 14cm;
+	--spatial-font-size-3: 12cm;
+	--spatial-font-size-2: 10cm;
+	--spatial-font-size-0: 6cm;
+
+	/* color scheme */
+	--background-color: #FFFFFF;
+
+	--light-primary-color:	var(--light-pink);
+	--primary-color:		var(--pink);
+	--dark-primary-color:	var(--dark-pink);
+
+	--light-secondary-color:	var(--light-yellow);
+	--secondary-color:			var(--yellow);
+	--dark-secondary-color:		var(--dark-yellow);
+
+	--light-alert-color:	var(--light-red);
+	--alert-color:			var(--red);
+	--dark-alert-color:		var(--dark-red);
+
+	--light-base-color:	var(--light-kelp);
+	--base-color:		var(--kelp);
+}
+
+/* .dom selects any Component rendered in the HTML "Document Object Model" */
+.dom.heading-component {
+	margin-top: 40px;
+	text-align: center;
+	color: var(--dark-primary-color);
+}
+
+/* Above we styled the DOM heading-component, here we style the "Spatial Object Model" (aka 3D scene graph) equivalent */
+.som.heading-component {
+	/* You can use hex colors (#AABBCC) or rgb colors (rgb(128, 200, 255)) */
+	color: var(--dark-primary-color);
+	centroid: 0 0 -2m;
+}
+
+.dom.mode-switcher-component {
+	position: absolute;
+	bottom: 25px;
+	left: 50%;
+	transform: translate(-50%, 0);
+}
+
+.som.mode-switcher-component {
+	centroid: -1m 0.025m -2m;
+}
+
+.som light[name='DirectionalLight'] {
+	/* centroid is the origin of the selected SOM node */
+	centroid: 0m 10m 20m;
+}
+
