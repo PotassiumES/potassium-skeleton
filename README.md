@@ -1,6 +1,6 @@
 # PotassiumES Skeleton
 
-**NOTE** We're just breaking ground on this project and there's a lot to do. Go look at the [Projects Section](https://github.com/orgs/PotassiumES/projects) to see what's happening and how you can help!
+**NOTE** We're just breaking ground on this project and there's a lot to do. Go look at the [Issues](https://github.com/PotassiumES/potassium-es/issues) to see what's happening and how you can help!
 
 This repo contains a tiny project configured to quickly build and run a mostly empty page that uses PotassiumES to work across all three display modes: flat, portal, and immersive.
 
