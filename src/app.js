@@ -1,5 +1,5 @@
 import App from 'potassium-es/src/App'
-import graph from 'potassium-es/src/Graph'
+import som from 'potassium-es/src/SOM'
 import { lt, ld, ldt } from 'potassium-es/src/Localizer'
 
 import HeadingComponent from 'potassium-components/src/atoms/HeadingComponent.js'
@@ -25,23 +25,23 @@ const MyApp = class extends App {
 		}, App.DisplayModeFailedEvent)
 
 		// Add lights to the portal scene
-		const portalLight = graph.directionalLight([0xffffff, 0.7])
+		const portalLight = som.directionalLight([0xffffff, 0.7])
 		this._portalScene.add(portalLight)
 		this._portalScene.add(portalLight.target)
-		this._portalScene.add(new graph.ambientLight([0xffffff, 0.9]))
+		this._portalScene.add(som.ambientLight([0xffffff, 0.9]))
 
 		// Add lights to the immersive scene
-		const immersiveLight = graph.directionalLight([0xffffff, 0.7])
+		const immersiveLight = som.directionalLight([0xffffff, 0.7])
 		this._immersiveScene.add(immersiveLight)
 		this._immersiveScene.add(immersiveLight.target)
-		this._immersiveScene.add(new graph.ambientLight([0xffffff, 0.9]))
+		this._immersiveScene.add(som.ambientLight([0xffffff, 0.9]))
 
 		// Add a spherical environment for immersive mode
-		this._immersiveEnvironmentMesh = graph
+		this._immersiveEnvironmentMesh = som
 			.mesh(
-				graph.sphereBufferGeometry(500, 60, 40),
-				graph.meshBasicMaterial({
-					map: graph.textureLoader().load('environment.jpg')
+				som.sphereBufferGeometry(500, 60, 40),
+				som.meshBasicMaterial({
+					map: som.textureLoader().load('environment.jpg')
 				})
 			)
 			.appendTo(this._immersiveScene)
@@ -52,5 +52,5 @@ const MyApp = class extends App {
 
 document.addEventListener('DOMContentLoaded', ev => {
 	window.app = new MyApp()
-	document.body.appendChild(window.app.el)
+	document.body.appendChild(window.app.dom)
 })
