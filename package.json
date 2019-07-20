@@ -15,6 +15,7 @@
     "collect": "npm-run-all collect-es collect-components collect-lib collect-src",
     "postcss": "postcss src/app.kss -o dist/app.css",
     "postcss-watch": "postcss --watch src/app.kss -o dist/app.css",
+    "compress": "node_modules/terser/bin/uglifyjs --compress --module dist/build.js > dist/build.min.js",
     "rollup": "rollup -c rollup.config.js",
     "rollup-watch": "rollup -w -c rollup.config.js",
     "eslint": "eslint src",
@@ -88,7 +89,9 @@
     "rollup": "^0.62.0",
     "rollup-plugin-cleanup": "^3.0.0",
     "rollup-plugin-commonjs": "^9.1.3",
-    "rollup-plugin-node-resolve": "^3.3.0"
+    "rollup-plugin-node-resolve": "^3.3.0",
+    "three": "^0.106.2",
+    "terser": "^4.1.2"
   },
   "dependencies": {}
 }
