@@ -10,7 +10,7 @@ import VirtualKeyboardComponent from 'potassium-components/src/organisms/Virtual
 import HomeComponent from './HomeComponent.js'
 import AboutComponent from './AboutComponent.js'
 
-document.addEventListener('DOMContentLoaded', ev => {
+document.addEventListener('DOMContentLoaded', (ev) => {
 	window.app = new SplashApp()
 	document.body.appendChild(window.app.dom)
 })
@@ -39,7 +39,7 @@ const SplashApp = class extends App {
 		this._masthead = new MastheadComponent(null, {
 			brand: lt('Skeleton'),
 			brandAnchor: '/',
-			menuItems: ViewInfo.map(info => {
+			menuItems: ViewInfo.map((info) => {
 				return {
 					name: lt(info.name),
 					anchor: info.anchor
@@ -47,14 +47,14 @@ const SplashApp = class extends App {
 			})
 		}).appendTo(this)
 		this._masthead.addListener((eventName, mode) => {
-			this.setDisplayMode(mode).catch(err => {
+			this.setDisplayMode(mode).catch((err) => {
 				console.error('Could not set display mode', err)
 			})
 		}, MastheadComponent.MODE_REQUEST_EVENT)
 
 		// MultiComponent holds Components that we'll switch among when responding to Router events
 		this._multiComponent = new MultiComponent(null, {
-			components: ViewInfo.map(info => {
+			components: ViewInfo.map((info) => {
 				return new info.component(undefined, {
 					usesPortalOverlay: false
 				})
@@ -101,7 +101,7 @@ const SplashApp = class extends App {
 		}
 	}
 
-	_setupLights(scene){
+	_setupLights(scene) {
 		const directionalLight = som.directionalLight([0xffffff, 0.7])
 		scene.add(directionalLight)
 		scene.add(directionalLight.target)

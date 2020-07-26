@@ -18,9 +18,21 @@
     "compress": "node_modules/terser/bin/uglifyjs --compress --module dist/build.js > dist/build.min.js",
     "rollup": "rollup -c rollup.config.js",
     "rollup-watch": "rollup -w -c rollup.config.js",
-    "eslint": "eslint src",
+    "lint": "eslint src",
+    "lint-fix": "eslint src --fix",
     "prettier": "prettier --write src/**/*.{js,html,json}",
     "clear": "rimraf dist"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "prettier --write"
+    ]
   },
   "repository": {
     "type": "git",
@@ -43,7 +55,8 @@
     "semi": false,
     "useTabs": true,
     "printWidth": 120,
-    "singleQuote": true
+    "singleQuote": true,
+    "trailingComma": "none"
   },
   "eslintConfig": {
     "parserOptions": {
@@ -54,8 +67,7 @@
       "prettier"
     ],
     "extends": [
-      "prettier",
-      "eslint:recommended"
+      "prettier"
     ],
     "rules": {
       "no-var": "warn",
@@ -70,28 +82,28 @@
     "single-page-app/build.js",
     "video-player/build.js"
   ],
-  "devDependencies": {
-    "cpx": "^1.5.0",
-    "eslint": "^5.0.1",
-    "eslint-config-prettier": "^2.9.0",
-    "eslint-plugin-prettier": "^2.6.2",
-    "http-server": "^0.11.1",
-    "npm-run-all": "^4.1.3",
-    "postcss": "^7.0.4",
-    "postcss-cli": "^6.0.0",
-    "postcss-import": "^12.0.0",
-    "postcss-potassium": "1.0.0",
-    "potassium-components": "1.0.0",
-    "potassium-es": "1.0.0",
-    "precss": "^3.1.2",
-    "prettier": "^1.13.7",
-    "rimraf": "^2.6.2",
-    "rollup": "^0.62.0",
-    "rollup-plugin-cleanup": "^3.0.0",
-    "rollup-plugin-commonjs": "^9.1.3",
-    "rollup-plugin-node-resolve": "^3.3.0",
-    "three": "^0.106.2",
-    "terser": "^4.1.2"
+  "dependencies": {
+    "potassium-components": "potassiumes/potassium-components#development"
   },
-  "dependencies": {}
+  "devDependencies": {
+    "rimraf": "^3.0.2",
+    "precss": "^4.0.0",
+    "npm-run-all": "^4.1.5",
+    "cpx": "^1.5.0",
+    "esdoc": "^1.1.0",
+    "esdoc-standard-plugin": "^1.0.0",
+    "eslint": "^7.5.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.11",
+    "prettier": "^2.0.5",
+    "http-server": "^0.12.3",
+    "rollup": "^2.23.0",
+    "rollup-plugin-cleanup": "^3.1.1",
+    "rollup-plugin-terser": "^6.1.0",
+    "@rollup/plugin-commonjs": "^14.0.0",
+    "@rollup/plugin-node-resolve": "^8.4.0",
+    "@rollup/plugin-replace": "^2.3.3"
+  }
 }
